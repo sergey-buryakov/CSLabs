@@ -28,17 +28,14 @@ def qtyInfo(data):
     freq, number = FindFrequencyAndNumberChars(data)
     return round(FindAvarangeEntropy(freq) * number / 8)
 
-file = "PCI"
+file = "lab1/PCI"
 
 text = ReadFile(file).encode()
 enc1 = encode(text)
 print(enc1)
-
 print(qtyInfo(enc1),"bytes")
 
-encbin = encode(ReadFileBin(file + ".gz"))
-print(encbin)
-
+encbin = encode(ReadFileBin(file + ".bz2"))
 print(qtyInfo(encbin),"bytes")
 
 # to compare result of custom encode function with built in

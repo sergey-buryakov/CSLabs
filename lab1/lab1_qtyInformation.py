@@ -8,8 +8,6 @@ def ReadFile(filename):
 def FindFrequencyAndNumberChars(text):
     freqChars = {}
     numberOfChars = 0
-    text = re.sub(r'[\s]','', text)
-    text = text.lower()
     for char in text:
         numberOfChars += 1
     for char in text:
@@ -23,13 +21,15 @@ def FindAvarangeEntropy(p):
         entropy -= p[ch] * math.log2(p[ch])
     return entropy
 
-file = "Shevchenko"
+file = "lab1/PCI"
 
 if __name__ == "__main__":
     freqChars, numberOfChars = FindFrequencyAndNumberChars(ReadFile(file))
     entropy = FindAvarangeEntropy(freqChars)
     quantity = FindAvarangeEntropy(freqChars) * numberOfChars / 8
+    count = 0
     for key in sorted(freqChars.keys()):
+        count += 1
         print("'{0}': {1}".format(key,freqChars[key]))
     print("entropy: {},\tquantity: {} bytes".format(entropy, round(quantity)))
 
